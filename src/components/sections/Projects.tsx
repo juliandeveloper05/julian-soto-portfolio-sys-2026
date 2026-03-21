@@ -1,6 +1,7 @@
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
-import { Cpu, Cloud, Zap, Database, Terminal, Shield, Code } from 'lucide-react';
+import { Cpu, Cloud, Zap, Database, Terminal, Shield, Code, ChevronRight } from 'lucide-react';
 
 const iconMap: Record<string, React.ElementType> = {
   Cpu,
@@ -14,6 +15,18 @@ const iconMap: Record<string, React.ElementType> = {
 
 export default function Projects() {
   const { t } = useTranslation();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [showArrow, setShowArrow] = useState(true);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const handleScroll = () => {
+      setShowArrow(el.scrollLeft + el.clientWidth < el.scrollWidth - 20);
+    };
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section id="projects" className="relative py-24 bg-background overflow-hidden">
@@ -42,7 +55,7 @@ export default function Projects() {
           <div className="h-px bg-secondary flex-1 opacity-20 hidden md:block"></div>
         </div>
 
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 md:pb-0">
+        <div ref={scrollRef} className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 md:pb-0">
           {t.projects.items.map((project, index) => {
             const Icon = iconMap[project.icon] || Code;
 
@@ -88,6 +101,18 @@ export default function Projects() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Mobile scroll hint arrow */}
+        <div className={`md:hidden flex justify-center mt-4 transition-opacity duration-300 ${showArrow ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+          <motion.div
+            animate={{ x: [0, 6, 0] }}
+            transition={{ repeat: Infinity, duration: 1.2, ease: 'easeInOut' }}
+            className="flex items-center gap-1 text-primary/70"
+          >
+            <span className="font-headline text-[10px] uppercase tracking-[0.2em]">scroll</span>
+            <ChevronRight className="w-4 h-4" />
+          </motion.div>
         </div>
       </div>
     </section>
