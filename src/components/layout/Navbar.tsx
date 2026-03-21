@@ -1,7 +1,7 @@
 "use client";
 
 import { Terminal, Menu, X, Home, Code, Cpu, Link as LinkIcon } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useTranslation } from '../../i18n/LanguageContext';
 

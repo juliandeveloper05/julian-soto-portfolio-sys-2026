@@ -1,5 +1,5 @@
 import { Code, Shield, Zap, Cpu, Layers, Database } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
 
 const iconMap: Record<string, React.ElementType> = {

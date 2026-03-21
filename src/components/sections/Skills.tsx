@@ -1,5 +1,5 @@
 import { Terminal, Database, Cloud, Code, Shield, Layers, Cpu, Zap, Globe, Braces } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
 
 const skillIcons: Record<string, React.ElementType> = {

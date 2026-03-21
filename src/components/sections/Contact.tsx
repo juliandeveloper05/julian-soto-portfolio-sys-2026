@@ -1,5 +1,5 @@
 import { Send, Mail, User } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Contact() {

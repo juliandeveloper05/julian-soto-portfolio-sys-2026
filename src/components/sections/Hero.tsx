@@ -1,5 +1,5 @@
 import { Download } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Hero() {
