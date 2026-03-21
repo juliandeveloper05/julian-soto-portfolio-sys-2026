@@ -90,8 +90,8 @@ export default function About() {
 
   const executeCommand = (raw: string): ReactNode => {
     const parts = raw.trim().split(/\s+/);
-    const cmd = parts[0].toLowerCase();
-    const args = parts.slice(1).join(' ');
+    const cmd = parts[0].toLowerCase().replace(/^['"`]|['"`]$/g, '');
+    const args = parts.slice(1).join(' ').replace(/^['"`]|['"`]$/g, '');
     switch (cmd) {
       case 'help':    return renderHelp(t);
       case 'whoami':  return renderWhoami(t);
