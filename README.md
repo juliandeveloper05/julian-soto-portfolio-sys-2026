@@ -56,5 +56,5 @@ The internationalization is handled purely through React Context to keep the bun
 
 ---
 <div align="center">
-  <sub>© 2025 Julian Soto // ENCRYPTED_CONNECTION</sub>
+  <sub>© 2026 Julian Soto // ENCRYPTED_CONNECTION</sub>
 </div>
