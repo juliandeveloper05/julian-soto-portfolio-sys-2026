@@ -1,0 +1,247 @@
+{
+  "navbar": {
+    "brand": "JULIAN_SOTO_SYS",
+    "links": {
+      "root": "INICIO",
+      "about": "SOBRE MI",
+      "services": "SERVICIOS",
+      "skills": "SKILLS",
+      "projects": "PROYECTOS",
+      "timeline": "TIMELINE",
+      "contact": "CONTACTO"
+    },
+    "contact_button": "CONTRATAME",
+    "mobile_close": "CERRAR_MENU",
+    "mobile_nav_label": "// MENÚ_DE_NAVEGACIÓN",
+    "mobile_bottom": {
+      "root": "INICIO",
+      "code": "CODE",
+      "core": "CORE",
+      "link": "LINK"
+    }
+  },
+  "hero": {
+    "name": "JULIAN SOTO",
+    "title": "SOFTWARE_ENGINEER",
+    "subtitle": "Senior Software Engineer | Desarrollador Full-Stack",
+    "bio": "Ingeniero de Software Full-Stack Senior especializado en arquitecturas web modernas y aplicaciones potenciadas con IA. Construyo experiencias digitales con Next.js, React, TypeScript, soluciones WordPress con PHP 8 y herramientas de IA con Python, FastAPI, PyTorch & TensorFlow.",
+    "download_cv": "DESCARGAR CV",
+    "hire_me": "CONTRATAME! _",
+    "status": "STATUS: ONLINE"
+  },
+  "about": {
+    "section_label": "// SOBRE_MI",
+    "heading_prefix": "SYSTEM_",
+    "heading_highlight": "INFO",
+    "terminal_title": "bash — julian_soto — 80x24",
+    "terminal_command": "whoami",
+    "lines": [
+      { "label": "USER", "value": "julian_soto" },
+      { "label": "ROLE", "value": "Senior Software Engineer | Full-Stack Developer" },
+      { "label": "LOCATION", "value": "Argentina // Remote" },
+      { "label": "BIO", "value": "Ingeniero de Software Full-Stack Senior especializado en arquitecturas web modernas y aplicaciones potenciadas con IA. Diseño soluciones escalables y type-safe que resuelven problemas de negocio complejos — desde plataformas CMS hasta herramientas de audio con redes neuronales." },
+      { "label": "STACK", "value": "TypeScript, React, Next.js, Node.js, PHP 8, WordPress, Python, FastAPI, PyTorch, TensorFlow" }
+    ]
+  },
+  "skills": {
+    "section_label": "// SKILLS_CACHE",
+    "categories": [
+      {
+        "name": "Frontend",
+        "items": ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"]
+      },
+      {
+        "name": "Backend & Data",
+        "items": ["Node.js", "PHP 8", "WordPress", "PostgreSQL", "MySQL", "MongoDB", "Supabase"]
+      },
+      {
+        "name": "AI & ML",
+        "items": ["Python", "FastAPI", "PyTorch", "TensorFlow", "Machine Learning"]
+      },
+      {
+        "name": "Architecture",
+        "items": ["Docker", "Cloud Sync", "Web Audio API", "OOP Patterns", "Systems Design"]
+      }
+    ]
+  },
+  "projects": {
+    "section_label": "// PROYECTOS",
+    "heading_prefix": "DEPLOYED_",
+    "heading_highlight": "PROJECTS",
+    "view_repo": "VER_REPO ->",
+    "items": [
+      {
+        "id": "DUMU_AI",
+        "title": "DUMU_AI_EXTRACTION",
+        "description": "Aplicación full-stack de IA que extrae líneas de bajo de cualquier archivo de audio usando la red neuronal Demucs de Meta AI para separación de fuentes y Basic Pitch de Spotify para conversión audio-a-MIDI. Incluye detección de BPM y pipeline de progreso en tiempo real.",
+        "tag": "v2.0.0-STABLE",
+        "image": "/assets/dumu-preview.png",
+        "color": "primary",
+        "githubUrl": "https://github.com/juliandeveloper05/Dumu-AI-Bass-Extraction",
+        "liveUrl": "https://dumu.vercel.app/"
+      },
+      {
+        "id": "BITROVA_APP",
+        "title": "BITROVA_TASKS",
+        "description": "App de gestión de tareas con autenticación Supabase y sincronización en la nube. Incluye tareas recurrentes, diseño glassmorphism, adjuntos, subtareas, drag & drop, undo/redo y animaciones Lottie. Multiplataforma iOS/Android/Web.",
+        "tag": "CROSS_PLATFORM",
+        "image": "/assets/bitrova-preview.png",
+        "color": "secondary",
+        "githubUrl": "https://github.com/juliandeveloper05/tasklist-app",
+        "liveUrl": ""
+      },
+      {
+        "id": "BASS_ACADEMY",
+        "title": "BASS_ACADEMY",
+        "description": "Aplicación de entrenamiento musical interactiva construida con React 19 y Web Audio API. Incluye síntesis de audio en tiempo real, generación dinámica de ejercicios y visualización responsiva de tablaturas.",
+        "tag": "LIVE_DEMO",
+        "image": "/assets/bass-academy-preview.png",
+        "color": "primary",
+        "githubUrl": "https://github.com/juliandeveloper05/Bass-Academy-Interactive-Bass-Training",
+        "liveUrl": "https://bass-academy-interactive-bass-train.vercel.app/"
+      },
+      {
+        "id": "NEXUSSHOP_ECOMMERCE",
+        "title": "NEXUSSHOP_ECOMMERCE",
+        "description": "Solución E-commerce Headless con integración segura de Stripe/MercadoPago, gestión dinámica de inventario vía MongoDB, y optimizaciones de rendimiento SSR.",
+        "tag": "E-COMMERCE",
+        "image": "/assets/mp-preview.jpg",
+        "color": "secondary",
+        "githubUrl": "https://github.com/juliandeveloper05/e-commerce-project-mp-2024/tree/main",
+        "liveUrl": "https://e-commerce-project-mp-2024-second.vercel.app/"
+      },
+      {
+        "id": "SOUL_SOLUTIONS",
+        "title": "SOUL_SOLUTIONS",
+        "description": "Landing page profesional para consultoría en modernización de mainframes. Demuestra experiencia en migración legacy y capacidades de diseño de sistemas.",
+        "tag": "ENTERPRISE",
+        "image": "/assets/soul-solutions-preview.jpg",
+        "color": "primary",
+        "githubUrl": "https://github.com/juliandeveloper05/soul-solutions",
+        "liveUrl": "https://soul-solutions-mauve.vercel.app/"
+      },
+      {
+        "id": "FORMA_REAL",
+        "title": "FORMA_REAL_CMS",
+        "description": "Foro de comunidad fitness con arquitectura WordPress personalizada. Plugin OOP con tablas MySQL propias, sistema de notificaciones en tiempo real, moderación avanzada, búsqueda full-text y diseño moderno.",
+        "tag": "CMS_PLUGIN",
+        "image": "/assets/forma-real-preview.png",
+        "color": "secondary",
+        "githubUrl": "https://github.com/juliandeveloper05/forma-real",
+        "liveUrl": ""
+      }
+    ]
+  },
+  "services": {
+    "section_label": "// SERVICIOS",
+    "heading_prefix": "CORE_",
+    "heading_highlight": "SERVICES",
+    "items": [
+      {
+        "id": "FRONTEND",
+        "title": "Arquitectura Frontend Moderna",
+        "description": "Construcción de interfaces de usuario modernas y responsivas utilizando tecnologías de última generación. Especializado en crear aplicaciones web dinámicas e interactivas con React 19 y Next.js.",
+        "icon": "Code",
+        "color": "primary"
+      },
+      {
+        "id": "BACKEND",
+        "title": "Backend Escalable & Diseño de APIs",
+        "description": "Desarrollo de soluciones del lado del servidor robustas y escalables con Node.js y Next.js. Creación de APIs eficientes e implementación de sistemas de autenticación seguros.",
+        "icon": "Shield",
+        "color": "secondary"
+      },
+      {
+        "id": "DATABASE",
+        "title": "Estrategia de Datos & Modelado",
+        "description": "Diseño e implementación de estructuras de bases de datos eficientes usando MySQL, MongoDB y PostgreSQL. Optimización de consultas y garantía de integridad de datos.",
+        "icon": "Database",
+        "color": "tertiary"
+      },
+      {
+        "id": "FULLSTACK",
+        "title": "Ingeniería de Productos End-to-End",
+        "description": "Entrega de aplicaciones web completas desde el concepto hasta el despliegue. Integración perfecta de frontend, backend y sistemas legacy para una experiencia óptima.",
+        "icon": "Cpu",
+        "color": "primary"
+      },
+      {
+        "id": "CMS",
+        "title": "CMS & WordPress Development",
+        "description": "Desarrollo de plugins personalizados con arquitectura OOP, themes a medida y soluciones WordPress empresariales. Implementación de tablas MySQL personalizadas y sistemas de moderación.",
+        "icon": "Layers",
+        "color": "secondary"
+      },
+      {
+        "id": "AI_AUDIO",
+        "title": "AI & Audio Processing",
+        "description": "Construcción de aplicaciones full-stack potenciadas con IA para análisis y transformación de audio. Especializado en Python, FastAPI, PyTorch & TensorFlow — incluyendo separación de fuentes neurales y conversión audio-a-MIDI.",
+        "icon": "Zap",
+        "color": "tertiary"
+      }
+    ]
+  },
+  "timeline": {
+    "section_label": "// TIMELINE",
+    "heading_prefix": "SYSTEM_",
+    "heading_highlight": "TIMELINE",
+    "events": [
+      {
+        "id": "EVENT_01",
+        "year": "2020 - PRESENTE",
+        "title": "Senior Software Engineer",
+        "company": "Soul Solutions",
+        "description": "Modernización de mainframes: integración de sistemas COBOL/Db2 con arquitecturas cloud modernas. Trabajo con Next.js, Node.js, TypeScript e implementación de APIs RESTful para clientes enterprise.",
+        "color": "primary"
+      },
+      {
+        "id": "EVENT_02",
+        "year": "2024",
+        "title": "Especialización Full Stack",
+        "company": "APX School",
+        "description": "MERN Stack y Arquitectura de Sistemas. Formación avanzada en diseño de aplicaciones escalables y mejores prácticas.",
+        "color": "secondary"
+      },
+      {
+        "id": "EVENT_03",
+        "year": "2023 - PRESENTE",
+        "title": "Licenciatura en Informática",
+        "company": "Universidad Nacional de Quilmes",
+        "description": "Actualmente cursando la carrera de Informática, enfocándome en aspectos teóricos y prácticos de la computación.",
+        "color": "tertiary"
+      },
+      {
+        "id": "EVENT_04",
+        "year": "2003 - 2014",
+        "title": "Educación Secundaria",
+        "company": "Colegio Cimdip y Miguel Cane",
+        "description": "Completé la educación secundaria con orientación en Economía y fundamentos de negocios.",
+        "color": "primary"
+      }
+    ]
+  },
+  "contact": {
+    "section_label": "// INICIAR_CONTACTO",
+    "heading_prefix": "CONTACT_",
+    "heading_highlight": "ME",
+    "establish_title": "ESTABLECER_CONEXIÓN",
+    "establish_description": "¿Listo para construir tu próximo proyecto? Envía un mensaje para iniciar la conversación. Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades de colaboración.",
+    "email_label": "EMAIL",
+    "email_value": "juliansoto.dev@gmail.com",
+    "availability_label": "DISPONIBILIDAD",
+    "availability_value": "ABIERTO_A_COLABORAR",
+    "form": {
+      "name_label": "NOMBRE",
+      "name_placeholder": "INGRESAR_NOMBRE",
+      "email_label": "EMAIL",
+      "email_placeholder": "INGRESAR_EMAIL",
+      "message_label": "MENSAJE",
+      "message_placeholder": "INGRESAR_MENSAJE",
+      "send_button": "ENVIAR_MENSAJE"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 J_SOTO // CONEXIÓN_ENCRIPTADA",
+    "status": "UP_LINK_ACTIVE"
+  }
+}

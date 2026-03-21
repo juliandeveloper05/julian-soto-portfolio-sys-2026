@@ -1,9 +1,13 @@
+import { useTranslation } from '../../i18n/LanguageContext';
+
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-background border-t border-secondary/10 w-full py-12">
       <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-8 gap-4">
         <div className="font-headline text-[10px] tracking-[0.2em] uppercase text-on-surface-variant/40">
-          © 2024 J_SOTO // ENCRYPTED_CONNECTION
+          {t.footer.copyright}
         </div>
         
         <div className="flex gap-8">
@@ -35,7 +39,7 @@ export default function Footer() {
 
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_8px_#9cff93]"></div>
-          <span className="font-headline text-[10px] text-primary/60 tracking-widest uppercase">UP_LINK_ACTIVE</span>
+          <span className="font-headline text-[10px] text-primary/60 tracking-widest uppercase">{t.footer.status}</span>
         </div>
       </div>
     </footer>

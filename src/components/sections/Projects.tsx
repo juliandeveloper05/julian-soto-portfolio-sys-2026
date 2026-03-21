@@ -1,33 +1,9 @@
 import { motion } from 'motion/react';
-
-const projects = [
-  {
-    id: 'NULL_VECTOR_FIREWALL',
-    title: 'NULL_VECTOR_FIREWALL',
-    description: 'A decentralized packet filtering system using eBPF for zero-latency mitigation of DDoS attacks on edge nodes. Implemented in pure Rust.',
-    tag: 'v1.2.0-STABLE',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCyzuSztS4OoA2pVEchkwUITfZnowerls2JPA1g5VUWLG4N52-K79SNfjX5YfnhFy4oVijgYeXsEv6LrWRcEdOrlhfMu9gAOknNPKR3DVc0-CHA92949M04MyejAj_0JzYthtydi7tVYn_Bn-aP00F3whvcdv5bef7mVoK1mrTDkBO6CmVoHPLvLTIPgKohg7zQyEEDAbpez8tlSHsjdsINoEXmSfjuNaLsrl0pa5VfY1662QBYkWGjCjDDJjq8sc-3sFgq4tjeCLvG',
-    color: 'primary'
-  },
-  {
-    id: 'KRYPTOS_DASHBOARD',
-    title: 'KRYPTOS_DASHBOARD',
-    description: 'Real-time visualization tool for global threat intelligence. Aggregates data from various darknet feeds into an interactive HUD.',
-    tag: 'ALPHA_BUILD',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBptLMT-iKgA_XlV0k8VK1VlzJi1Gqvx4adZIYkDSkPvN5chaS-_7hKcCQBojp1rf6W4VV9VC-NGdhoh6FaRB69DmOMWWPy3ZvZ5eJ9y4vqKsF4O1zgbGs59iUhDesLPcF3KkIJ_xmqKsaTFHslABi0abiTXjytRIgsW-d6vBZVBIpCv8n3Zay08RCkUwqJ99UAxBflHIroyEa4PVodJZD13cOPCMPZXfOSayu2poytjP9Vs8MNMx6G4i9bltr3c_F_4vU-6X-sxyVd',
-    color: 'secondary'
-  },
-  {
-    id: 'ORION_SATELLITE_LINK',
-    title: 'ORION_SATELLITE_LINK',
-    description: 'Proprietary communication protocol for high-altitude node synchronization. Features military-grade PQC (Post-Quantum Cryptography).',
-    tag: 'LEGACY_MODULE',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDHbKWe_thNbHkYk0XEQ-bx7TVZ7QSzMA7STrtWF71QooQsCCnN5-eb2xsr3m5k_8sQaymK5nWw4GsekWZqpTIc5wN8v92yAfhGQQcq7enBbrIuK48jTFRKPVyt8zi864sCPliMbKL5Rg0T25cZZufUt5P1XeIDHGqG0DZOJaAXmVSlLpoo0EiOFtH3vKOWICC0aeqaCvO9T9qYp-I6jp2bWg4aD6L1Y7vzO42ij-AdGLcT2cKsO7nuCdmHgV7goEKpLU3TmmlgUd-I',
-    color: 'primary'
-  }
-];
+import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Projects() {
+  const { t } = useTranslation();
+
   return (
     <section id="projects" className="relative py-24 bg-background overflow-hidden">
       {/* Matrix Pattern Overlay */}
@@ -45,18 +21,18 @@ export default function Projects() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="font-headline text-[10px] text-primary/60 uppercase tracking-[0.3em] mb-6 md:hidden">
-          // PROJECTS
+          {t.projects.section_label}
         </div>
         <div className="flex md:items-center gap-4 mb-16">
           <div className="h-px bg-primary flex-1 opacity-20 hidden md:block"></div>
           <h2 className="font-headline text-2xl md:text-5xl font-bold tracking-tighter uppercase">
-            DEPLOYED_<span className="text-primary">PROJECTS</span>
+            {t.projects.heading_prefix}<span className="text-primary">{t.projects.heading_highlight}</span>
           </h2>
           <div className="h-px bg-secondary flex-1 opacity-20 hidden md:block"></div>
         </div>
 
         <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-8 md:pb-0">
-          {projects.map((project, index) => (
+          {t.projects.items.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -88,9 +64,14 @@ export default function Projects() {
                     <span className={`w-2 h-2 rounded-full bg-${project.color} animate-pulse`}></span>
                     <span className="w-2 h-2 rounded-full bg-secondary/30"></span>
                   </div>
-                  <button className={`font-headline text-xs text-${project.color} border border-${project.color}/30 px-4 py-2 uppercase tracking-widest glitch-hover transition-all`}>
-                    VIEW_REPO -&gt;
-                  </button>
+                  <a 
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`font-headline text-xs text-${project.color} border border-${project.color}/30 px-4 py-2 uppercase tracking-widest glitch-hover transition-all`}
+                  >
+                    {t.projects.view_repo}
+                  </a>
                 </div>
               </div>
             </motion.div>

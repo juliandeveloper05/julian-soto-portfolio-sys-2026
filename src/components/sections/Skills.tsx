@@ -1,28 +1,59 @@
-import { Terminal, Database, Cloud, Code, Shield, Layers } from 'lucide-react';
+import { Terminal, Database, Cloud, Code, Shield, Layers, Cpu, Zap, Globe, Braces } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useTranslation } from '../../i18n/LanguageContext';
 
-const skills = [
-  { name: 'Rust / C++', icon: Terminal, color: 'primary' },
-  { name: 'PostgreSQL', icon: Database, color: 'secondary' },
-  { name: 'AWS / K8s', icon: Cloud, color: 'primary' },
-  { name: 'TypeScript', icon: Code, color: 'secondary' },
-  { name: 'Pentesting', icon: Shield, color: 'primary' },
-  { name: 'React / Next', icon: Layers, color: 'secondary' },
-];
+const skillIcons: Record<string, React.ElementType> = {
+  'Next.js': Globe,
+  'React 19': Layers,
+  'TypeScript': Code,
+  'Tailwind CSS': Braces,
+  'HTML5': Code,
+  'CSS3': Code,
+  'Node.js': Terminal,
+  'PHP 8': Terminal,
+  'WordPress': Globe,
+  'PostgreSQL': Database,
+  'MySQL': Database,
+  'MongoDB': Database,
+  'Supabase': Cloud,
+  'Python': Terminal,
+  'FastAPI': Zap,
+  'PyTorch': Cpu,
+  'TensorFlow': Cpu,
+  'Machine Learning': Cpu,
+  'Docker': Cloud,
+  'Cloud Sync': Cloud,
+  'Web Audio API': Zap,
+  'OOP Patterns': Shield,
+  'Systems Design': Layers,
+};
+
+const colorCycle = ['primary', 'secondary'];
 
 export default function Skills() {
+  const { t } = useTranslation();
+
+  // Flatten all skills from categories for the grid display
+  const allSkills = t.skills.categories.flatMap((cat, catIdx) =>
+    cat.items.map((item) => ({
+      name: item,
+      icon: skillIcons[item] || Code,
+      color: colorCycle[catIdx % 2],
+    }))
+  );
+
   return (
     <section id="skills" className="py-12 px-6 max-w-7xl mx-auto w-full">
       <div className="font-headline text-[10px] text-primary/60 uppercase tracking-[0.3em] mb-6 md:hidden">
-        // SKILLS_CACHE
+        {t.skills.section_label}
       </div>
       <div className="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-        {skills.map((skill, index) => (
+        {allSkills.map((skill, index) => (
           <motion.div
             key={skill.name}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
+            transition={{ delay: index * 0.05 }}
             viewport={{ once: true }}
             className={`bg-surface p-3 md:p-4 border border-on-surface-variant/10 hover:border-${skill.color}/50 transition-all group cursor-default flex flex-col items-center md:items-start`}
           >

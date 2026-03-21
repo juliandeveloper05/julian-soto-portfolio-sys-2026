@@ -1,16 +1,19 @@
-import { Send, Mail, User, MessageSquare } from 'lucide-react';
+import { Send, Mail, User } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   return (
     <section id="contact" className="py-12 md:py-24 px-6 max-w-7xl mx-auto w-full mb-16 md:mb-0">
       <div className="font-headline text-[10px] text-secondary/60 uppercase tracking-[0.3em] mb-6 md:hidden">
-        // INITIATE_CONTACT
+        {t.contact.section_label}
       </div>
       <div className="flex items-center gap-4 mb-16">
         <div className="h-px bg-secondary flex-1 opacity-20 hidden md:block"></div>
         <h2 className="font-headline text-2xl md:text-5xl font-bold tracking-tighter uppercase">
-          CONTACT_<span className="text-secondary">ME</span>
+          {t.contact.heading_prefix}<span className="text-secondary">{t.contact.heading_highlight}</span>
         </h2>
         <div className="h-px bg-primary flex-1 opacity-20 hidden md:block"></div>
       </div>
@@ -24,11 +27,11 @@ export default function Contact() {
           className="space-y-8"
         >
           <h3 className="font-headline text-2xl font-bold text-on-surface mb-6 tracking-tight uppercase">
-            ESTABLISH_CONNECTION
+            {t.contact.establish_title}
           </h3>
           
           <p className="font-body text-on-surface-variant leading-relaxed max-w-md">
-            Ready to architect your next digital fortress? Send a message to initiate the handshake protocol. I am always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            {t.contact.establish_description}
           </p>
 
           <div className="space-y-6">
@@ -37,8 +40,8 @@ export default function Contact() {
                 <Mail className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <div className="font-headline text-[10px] text-primary/60 uppercase tracking-widest">EMAIL</div>
-                <div className="font-body text-on-surface group-hover:text-primary transition-colors">juliansoto.dev@gmail.com</div>
+                <div className="font-headline text-[10px] text-primary/60 uppercase tracking-widest">{t.contact.email_label}</div>
+                <div className="font-body text-on-surface group-hover:text-primary transition-colors">{t.contact.email_value}</div>
               </div>
             </div>
 
@@ -47,8 +50,8 @@ export default function Contact() {
                 <User className="w-5 h-5 text-secondary" />
               </div>
               <div>
-                <div className="font-headline text-[10px] text-secondary/60 uppercase tracking-widest">AVAILABILITY</div>
-                <div className="font-body text-on-surface group-hover:text-secondary transition-colors">OPEN_FOR_COLLABORATION</div>
+                <div className="font-headline text-[10px] text-secondary/60 uppercase tracking-widest">{t.contact.availability_label}</div>
+                <div className="font-body text-on-surface group-hover:text-secondary transition-colors">{t.contact.availability_value}</div>
               </div>
             </div>
           </div>
@@ -66,11 +69,11 @@ export default function Contact() {
 
           <form className="space-y-6 relative z-10">
             <div className="space-y-2">
-              <label className="font-headline text-[10px] text-primary/60 uppercase tracking-widest block">NAME</label>
+              <label className="font-headline text-[10px] text-primary/60 uppercase tracking-widest block">{t.contact.form.name_label}</label>
               <div className="relative">
                 <input 
                   type="text" 
-                  placeholder="ENTER_NAME"
+                  placeholder={t.contact.form.name_placeholder}
                   className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-primary transition-all duration-300 font-body"
                 />
                 <div className="absolute bottom-0 left-0 h-px bg-primary w-0 focus-within:w-full transition-all duration-500"></div>
@@ -78,11 +81,11 @@ export default function Contact() {
             </div>
 
             <div className="space-y-2">
-              <label className="font-headline text-[10px] text-secondary/60 uppercase tracking-widest block">EMAIL</label>
+              <label className="font-headline text-[10px] text-secondary/60 uppercase tracking-widest block">{t.contact.form.email_label}</label>
               <div className="relative">
                 <input 
                   type="email" 
-                  placeholder="ENTER_EMAIL"
+                  placeholder={t.contact.form.email_placeholder}
                   className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-secondary transition-all duration-300 font-body"
                 />
                 <div className="absolute bottom-0 left-0 h-px bg-secondary w-0 focus-within:w-full transition-all duration-500"></div>
@@ -90,11 +93,11 @@ export default function Contact() {
             </div>
 
             <div className="space-y-2">
-              <label className="font-headline text-[10px] text-tertiary/60 uppercase tracking-widest block">MESSAGE</label>
+              <label className="font-headline text-[10px] text-tertiary/60 uppercase tracking-widest block">{t.contact.form.message_label}</label>
               <div className="relative">
                 <textarea 
                   rows={4}
-                  placeholder="ENTER_MESSAGE"
+                  placeholder={t.contact.form.message_placeholder}
                   className="w-full bg-background/50 border border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-tertiary transition-all duration-300 font-body resize-none rounded-lg"
                 ></textarea>
               </div>
@@ -105,7 +108,7 @@ export default function Contact() {
               className="w-full bg-primary text-black font-headline py-4 uppercase tracking-widest glitch-hover transition-all flex items-center justify-center gap-2 group"
             >
               <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
-              SEND_MESSAGE
+              {t.contact.form.send_button}
             </button>
           </form>
         </motion.div>

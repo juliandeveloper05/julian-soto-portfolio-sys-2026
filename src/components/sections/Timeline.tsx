@@ -1,49 +1,17 @@
 import { motion } from 'motion/react';
-
-const timelineEvents = [
-  {
-    id: 'EVENT_01',
-    year: '2024 - PRESENT',
-    title: 'Senior Software Architect',
-    company: 'Mainframe Systems Inc.',
-    description: 'Leading the development of high-performance distributed systems and secure cloud architectures for global fintech clients.',
-    color: 'primary'
-  },
-  {
-    id: 'EVENT_02',
-    year: '2022 - 2024',
-    title: 'Full-Stack Developer',
-    company: 'Cyberdyne Solutions',
-    description: 'Developed and optimized secure web applications and internal tools using React, Node.js, and specialized security protocols.',
-    color: 'secondary'
-  },
-  {
-    id: 'EVENT_03',
-    year: '2020 - 2022',
-    title: 'Security Analyst',
-    company: 'Shield Security Group',
-    description: 'Performed comprehensive security audits and penetration testing for enterprise-level digital infrastructure.',
-    color: 'tertiary'
-  },
-  {
-    id: 'EVENT_04',
-    year: '2018 - 2020',
-    title: 'Junior Developer',
-    company: 'Neon Tech Lab',
-    description: 'Started my journey building responsive web interfaces and learning the intricacies of high-performance code.',
-    color: 'primary'
-  }
-];
+import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Timeline() {
+  const { t } = useTranslation();
+
   return (
     <section id="timeline" className="py-12 md:py-24 px-6 max-w-7xl mx-auto w-full">
       <div className="font-headline text-[10px] text-primary/60 uppercase tracking-[0.3em] mb-6 md:hidden">
-        // TIMELINE
+        {t.timeline.section_label}
       </div>
       <div className="flex items-center gap-4 mb-20">
         <h2 className="font-headline text-2xl md:text-5xl font-bold tracking-tighter uppercase">
-          SYSTEM_<span className="text-primary">TIMELINE</span>
+          {t.timeline.heading_prefix}<span className="text-primary">{t.timeline.heading_highlight}</span>
         </h2>
         <div className="h-px bg-primary flex-1 opacity-20 hidden md:block"></div>
       </div>
@@ -53,7 +21,7 @@ export default function Timeline() {
         <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-secondary/50 to-transparent opacity-20"></div>
 
         <div className="space-y-16">
-          {timelineEvents.map((event, index) => (
+          {t.timeline.events.map((event, index) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}

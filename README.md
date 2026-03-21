@@ -1,20 +1,60 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <h1 align="center">JULIAN_SOTO_SYS // PORTFOLIO</h1>
+  <p align="center">
+    <strong>Senior Software Engineer | Full-Stack Developer</strong>
+  </p>
+  <p align="center">Cyber-hacker themed personal portfolio built with React, Vite, TailwindCSS v4, and a custom i18n implementation.</p>
 </div>
 
-# Run and deploy your AI Studio app
+## 🚀 Features
 
-This contains everything you need to run your app locally.
+- **Terminal Aesthetic:** Cyber-hacker / sci-fi terminal design system.
+- **Micro-animations:** Glitch effects, scanlines, matrix patterns, and Lottie animations.
+- **Custom i18n (ES/EN):** Built-in LanguageContext provider using React Context API and JSON dictionaries to switch between formal Spanish and developer-slang English. Zero external i18n dependencies.
+- **Responsive:** Fluid layout from mobile to 4K displays.
+- **Real Data:** Showcases actual production deployed projects (Next.js, FastAPI, Node.js, AI Neural Networks).
 
-View your app in AI Studio: https://ai.studio/apps/d958fc9b-05f2-4a35-b707-5f1e3b81da99
+## 🛠️ Stack
 
-## Run Locally
+- **Framework:** React 19 + Vite
+- **Styling:** Tailwind CSS v4
+- **Icons:** Lucide React
+- **Animations:** Motion (Framer Motion)
+- **i18n:** Custom React Context implementation
+- **Deployment:** Vercel
 
-**Prerequisites:**  Node.js
+## ⚙️ Running Locally
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/juliandeveloper05/julian-soto-portfolio.git
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open `http://localhost:5173` in your browser.
+
+## 📁 i18n Structure
+
+The internationalization is handled purely through React Context to keep the bundle lightweight:
+
+- `src/i18n/LanguageContext.tsx`: The provider and `useTranslation` hook.
+- `src/i18n/types.ts`: TypeScript interfaces for the translation schema.
+- `src/i18n/locales/`: Contains `es.json` and `en.json` dictionaries.
+
+## 🔗 Connect
+
+[LinkedIn](https://www.linkedin.com/in/full-stack-julian-soto/) • [GitHub](https://github.com/juliandeveloper05) • [Instagram](https://www.instagram.com/palee_0x71/)
+
+---
+<div align="center">
+  <sub>© 2025 Julian Soto // ENCRYPTED_CONNECTION</sub>
+</div>

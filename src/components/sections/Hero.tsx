@@ -1,7 +1,10 @@
 import { Download } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section id="root" className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden px-4">
       {/* Background Aether */}
@@ -26,17 +29,17 @@ export default function Hero() {
             />
           </div>
           <div className="absolute -bottom-2 -right-2 bg-background border border-primary px-2 py-1 text-[10px] font-headline text-primary">
-            STATUS: ONLINE
+            {t.hero.status}
           </div>
         </div>
 
         <h1 className="font-headline text-3xl md:text-7xl font-bold tracking-tighter text-on-surface mb-4 leading-none uppercase break-words">
-          JULIAN SOTO <br/>
-          <span className="text-secondary tracking-wider md:tracking-widest text-lg md:text-5xl text-glow-secondary">SOFTWARE_ENGINEER</span>
+          {t.hero.name} <br/>
+          <span className="text-secondary tracking-wider md:tracking-widest text-lg md:text-5xl text-glow-secondary">{t.hero.title}</span>
         </h1>
 
         <p className="font-body text-on-surface-variant max-w-xl mb-10 text-sm md:text-lg px-2 md:px-0">
-          Architecting digital fortresses and high-performance neural interfaces. Specializing in secure full-stack deployments and esoteric code optimization.
+          {t.hero.bio}
         </p>
 
         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-16 w-full max-w-xs md:max-w-none">
@@ -45,13 +48,13 @@ export default function Hero() {
             download="Julian_Soto_CV.pdf"
             className="bg-primary text-black font-headline px-6 py-3 md:px-8 md:py-4 uppercase tracking-wider md:tracking-widest text-sm md:text-base glitch-hover transition-all flex items-center justify-center gap-2 w-full md:w-auto"
           >
-            <Download className="w-5 h-5" /> DESCARGAR CV
+            <Download className="w-5 h-5" /> {t.hero.download_cv}
           </a>
           <a 
             href="#contact"
             className="border border-on-surface-variant/30 text-secondary font-headline px-6 py-3 md:px-8 md:py-4 uppercase tracking-wider md:tracking-widest text-sm md:text-base hover:bg-secondary/10 glitch-hover transition-all w-full md:w-auto text-center flex items-center justify-center"
           >
-            CONTRATAME! _
+            {t.hero.hire_me}
           </a>
         </div>
       </motion.div>

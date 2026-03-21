@@ -3,22 +3,31 @@
 import { Terminal, Menu, X, Home, Code, Cpu, Link as LinkIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
+import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { locale, t, toggleLocale } = useTranslation();
+  const [isGlitching, setIsGlitching] = useState(false);
 
   const navLinks = [
-    { name: 'ROOT', href: '#root' },
-    { name: 'ABOUT', href: '#about' },
-    { name: 'SERVICES', href: '#services' },
-    { name: 'SKILLS', href: '#skills' },
-    { name: 'PROJECTS', href: '#projects' },
-    { name: 'TIMELINE', href: '#timeline' },
-    { name: 'CONTACT', href: '#contact' },
+    { name: t.navbar.links.root, href: '#root' },
+    { name: t.navbar.links.about, href: '#about' },
+    { name: t.navbar.links.services, href: '#services' },
+    { name: t.navbar.links.skills, href: '#skills' },
+    { name: t.navbar.links.projects, href: '#projects' },
+    { name: t.navbar.links.timeline, href: '#timeline' },
+    { name: t.navbar.links.contact, href: '#contact' },
   ];
 
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMenu = () => setIsMobileMenuOpen(false);
+
+  const handleLangToggle = () => {
+    setIsGlitching(true);
+    toggleLocale();
+    setTimeout(() => setIsGlitching(false), 400);
+  };
 
   return (
     <>
@@ -30,14 +39,14 @@ export default function Navbar() {
       >
         <div className="flex items-center gap-1 md:gap-2 text-sm md:text-xl font-headline font-bold text-primary tracking-wider md:tracking-widest truncate min-w-0">
           <Terminal className="w-5 h-5 animate-pulse hidden md:block" />
-          <span className="md:hidden text-primary">{'>//'}</span> JULIAN_SOTO_SYS
+          <span className="md:hidden text-primary">{'>//'}</span> {t.navbar.brand}
         </div>
         
         {/* Desktop Links */}
         <div className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
             <a 
-              key={link.name}
+              key={link.href}
               className="font-headline tracking-tighter uppercase text-sm text-secondary/70 hover:text-secondary transition-colors hover:bg-primary/10 hover:skew-x-2 px-2" 
               href={link.href}
             >
@@ -46,11 +55,24 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
-          <Terminal className="w-5 h-5 text-primary cursor-pointer hover:scale-110 transition-transform hidden md:block" />
-          <button className="hidden md:block font-headline tracking-tighter uppercase text-sm text-primary border border-primary/30 px-4 py-1 hover:bg-primary hover:text-black transition-all active:scale-95">
-            CONTACT_ME
+        <div className="flex items-center gap-3 md:gap-4">
+          {/* Language Toggle */}
+          <button 
+            onClick={handleLangToggle}
+            className={`font-headline tracking-tighter uppercase text-xs md:text-sm text-secondary border border-secondary/30 px-2 md:px-3 py-1 hover:bg-secondary/10 hover:border-secondary/60 transition-all active:scale-95 relative overflow-hidden ${isGlitching ? 'lang-glitch' : ''}`}
+          >
+            <span className={`inline-block transition-transform duration-200 ${isGlitching ? 'animate-pulse' : ''}`}>
+              [ LANG: {locale.toUpperCase()} ]
+            </span>
           </button>
+
+          <Terminal className="w-5 h-5 text-primary cursor-pointer hover:scale-110 transition-transform hidden md:block" />
+          <a 
+            href="#contact"
+            className="hidden md:block font-headline tracking-tighter uppercase text-sm text-primary border border-primary/30 px-4 py-1 hover:bg-primary hover:text-black transition-all active:scale-95"
+          >
+            {t.navbar.contact_button}
+          </a>
           
           {/* Mobile Toggle Icon - Dynamic Change */}
           <button 
@@ -82,11 +104,11 @@ export default function Navbar() {
           >
             <div className="p-6 flex flex-col gap-4 font-mono">
               <div className="text-[10px] text-primary/40 mb-2 uppercase tracking-[0.2em]">
-                // SYSTEM_NAVIGATION_MENU
+                {t.navbar.mobile_nav_label}
               </div>
               {navLinks.map((link, index) => (
                 <motion.a 
-                  key={link.name}
+                  key={link.href}
                   href={link.href}
                   onClick={closeMenu}
                   initial={{ x: -20, opacity: 0 }}
@@ -98,12 +120,25 @@ export default function Navbar() {
                   {link.name}_
                 </motion.a>
               ))}
+
+              {/* Mobile Language Toggle */}
+              <motion.button
+                onClick={handleLangToggle}
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                className={`text-lg font-headline font-bold text-secondary flex items-center gap-3 group py-2 ${isGlitching ? 'lang-glitch' : ''}`}
+              >
+                <span className="text-secondary opacity-0 group-hover:opacity-100 transition-opacity">{'>'}</span>
+                [ LANG: {locale.toUpperCase()} ]_
+              </motion.button>
+
               <div className="mt-4 pt-4 border-t border-primary/10">
                 <button 
                   onClick={closeMenu}
                   className="w-full bg-primary/10 text-primary font-headline py-3 uppercase tracking-widest text-sm border border-primary/20"
                 >
-                  EXECUTE_CLOSE
+                  {t.navbar.mobile_close}
                 </button>
               </div>
             </div>
@@ -117,19 +152,19 @@ export default function Navbar() {
           <div className="p-1 rounded-lg bg-primary/20 shadow-[0_0_10px_rgba(156,255,147,0.3)]">
             <Home className="w-5 h-5 text-primary" />
           </div>
-          <span className="text-[10px] font-headline text-primary uppercase tracking-tighter">ROOT</span>
+          <span className="text-[10px] font-headline text-primary uppercase tracking-tighter">{t.navbar.mobile_bottom.root}</span>
         </a>
         <a href="#projects" onClick={closeMenu} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
           <Code className="w-5 h-5 text-on-surface" />
-          <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">CODE</span>
+          <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">{t.navbar.mobile_bottom.code}</span>
         </a>
         <a href="#services" onClick={closeMenu} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
           <Cpu className="w-5 h-5 text-on-surface" />
-          <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">CORE</span>
+          <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">{t.navbar.mobile_bottom.core}</span>
         </a>
         <a href="#contact" onClick={closeMenu} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
           <LinkIcon className="w-5 h-5 text-on-surface" />
-          <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">LINK</span>
+          <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">{t.navbar.mobile_bottom.link}</span>
         </a>
       </div>
     </>
