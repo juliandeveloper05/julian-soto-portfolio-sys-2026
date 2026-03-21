@@ -50,6 +50,17 @@ The internationalization is handled purely through React Context to keep the bun
 - `src/i18n/types.ts`: TypeScript interfaces for the translation schema.
 - `src/i18n/locales/`: Contains `es.json` and `en.json` dictionaries.
 
+## 🗺️ Roadmap / Future Enhancements
+
+To continuously improve the quality and architecture of this portfolio, the following roadmap is planned:
+
+-   **[ ] 3D WebGL Integration:** Implement `Three.js` (React Three Fiber) to add interactive, low-poly cybernetic backgrounds or interactive 3D models.
+-   **[ ] E2E Testing Pipeline:** Set up **Playwright** or **Cypress** to ensure core user flows (i18n switching, navigation, form submissions) are robust and regression-free.
+-   **[ ] CI/CD Automation:** Implement **GitHub Actions** workflows for automated linting, TypeScript type-checking, and preview deployments on PRs.
+-   **[ ] Performance Optimization:** Add lazy loading for heavier assets/animations and implement advanced image optimization configurations via Vite plugins.
+-   **[ ] PWA Capabilities:** Add Service Workers and a Web App Manifest to allow users to install the portfolio as a standalone Progressive Web App (PWA).
+-   **[ ] Advanced Analytics:** Integrate a privacy-first web analytics tool (like Plausible or Umami) to track visitor flow and interaction with the `[ LANG ]` toggle.
+
 ## 🔗 Connect
 
 [LinkedIn](https://www.linkedin.com/in/full-stack-julian-soto/) • [GitHub](https://github.com/juliandeveloper05) • [Instagram](https://www.instagram.com/palee_0x71/)
