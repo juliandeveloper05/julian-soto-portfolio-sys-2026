@@ -109,6 +109,15 @@ export interface TranslationSchema {
       message_label: string;
       message_placeholder: string;
       send_button: string;
+      success_message: string;
+      errors: {
+        name_required: string;
+        email_required: string;
+        email_invalid: string;
+        message_required: string;
+        message_min: string;
+        send_error: string;
+      };
     };
   };
   footer: {

@@ -7,11 +7,24 @@ export default function Contact() {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+
+  const validate = (): boolean => {
+    const e = { name: '', email: '', message: '' };
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.name.trim()) e.name = t.contact.form.errors.name_required;
+    if (!formData.email.trim()) e.email = t.contact.form.errors.email_required;
+    else if (!emailRegex.test(formData.email.trim())) e.email = t.contact.form.errors.email_invalid;
+    if (!formData.message.trim()) e.message = t.contact.form.errors.message_required;
+    else if (formData.message.trim().length < 10) e.message = t.contact.form.errors.message_min;
+    setErrors(e);
+    return !e.name && !e.email && !e.message;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
-    
+    if (!validate()) return;
+
     setStatus('loading');
     try {
       const response = await fetch('/api/contact', {
@@ -100,79 +113,87 @@ export default function Contact() {
             <div className="space-y-2">
               <label className="font-headline text-[10px] text-primary/60 uppercase tracking-widest block">{t.contact.form.name_label}</label>
               <div className="relative">
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => { setFormData({ ...formData, name: e.target.value }); setErrors(prev => ({ ...prev, name: '' })); }}
                   disabled={status === 'loading'}
-                  required
                   placeholder={t.contact.form.name_placeholder}
-                  className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-primary transition-all duration-300 font-body disabled:opacity-50"
+                  className={`w-full bg-background/50 border-b py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none transition-all duration-300 font-body disabled:opacity-50 ${errors.name ? 'border-red-500' : 'border-on-surface-variant/20 focus:border-primary'}`}
                 />
-                <div className="absolute bottom-0 left-0 h-px bg-primary w-0 focus-within:w-full transition-all duration-500"></div>
+                {!errors.name && <div className="absolute bottom-0 left-0 h-px bg-primary w-0 focus-within:w-full transition-all duration-500"></div>}
               </div>
+              {errors.name && <p className="text-xs text-red-400 font-body mt-1">{errors.name}</p>}
             </div>
 
             <div className="space-y-2">
               <label className="font-headline text-[10px] text-secondary/60 uppercase tracking-widest block">{t.contact.form.email_label}</label>
               <div className="relative">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => { setFormData({ ...formData, email: e.target.value }); setErrors(prev => ({ ...prev, email: '' })); }}
                   disabled={status === 'loading'}
-                  required
                   placeholder={t.contact.form.email_placeholder}
-                  className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-secondary transition-all duration-300 font-body disabled:opacity-50"
+                  className={`w-full bg-background/50 border-b py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none transition-all duration-300 font-body disabled:opacity-50 ${errors.email ? 'border-red-500' : 'border-on-surface-variant/20 focus:border-secondary'}`}
                 />
-                <div className="absolute bottom-0 left-0 h-px bg-secondary w-0 focus-within:w-full transition-all duration-500"></div>
+                {!errors.email && <div className="absolute bottom-0 left-0 h-px bg-secondary w-0 focus-within:w-full transition-all duration-500"></div>}
               </div>
+              {errors.email && <p className="text-xs text-red-400 font-body mt-1">{errors.email}</p>}
             </div>
 
             <div className="space-y-2">
               <label className="font-headline text-[10px] text-tertiary/60 uppercase tracking-widest block">{t.contact.form.message_label}</label>
               <div className="relative">
-                <textarea 
+                <textarea
                   rows={4}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => { setFormData({ ...formData, message: e.target.value }); setErrors(prev => ({ ...prev, message: '' })); }}
                   disabled={status === 'loading'}
-                  required
                   placeholder={t.contact.form.message_placeholder}
-                  className="w-full bg-background/50 border border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-tertiary transition-all duration-300 font-body resize-none rounded-lg disabled:opacity-50"
+                  className={`w-full bg-background/50 border py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none transition-all duration-300 font-body resize-none rounded-lg disabled:opacity-50 ${errors.message ? 'border-red-500' : 'border-on-surface-variant/20 focus:border-tertiary'}`}
                 ></textarea>
               </div>
+              {errors.message && <p className="text-xs text-red-400 font-body mt-1">{errors.message}</p>}
             </div>
 
-            <button 
-              type="submit"
-              disabled={status === 'loading'}
-              className={`w-full font-headline py-4 uppercase tracking-widest transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed ${
-                status === 'success' ? 'bg-green-500 text-black' : 
-                status === 'error' ? 'bg-red-500 text-white' : 
-                'bg-primary text-black glitch-hover'
-              }`}
-            >
-              {status === 'loading' ? (
-                <span className="flex items-center gap-2">
-                  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-5 h-5 border-2 border-black border-t-transparent rounded-full" />
-                  Sending...
-                </span>
-              ) : status === 'success' ? (
-                <>
-                  <CheckCircle className="w-5 h-5" /> Message Sent
-                </>
-              ) : status === 'error' ? (
-                <>
-                  <XCircle className="w-5 h-5" /> Error Sending
-                </>
-              ) : (
-                <>
-                  <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
-                  {t.contact.form.send_button}
-                </>
+            <div>
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className={`w-full font-headline py-4 uppercase tracking-widest transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed ${
+                  status === 'success' ? 'bg-green-500 text-black' :
+                  status === 'error' ? 'bg-red-500 text-white' :
+                  'bg-primary text-black glitch-hover'
+                }`}
+              >
+                {status === 'loading' ? (
+                  <span className="flex items-center gap-2">
+                    <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-5 h-5 border-2 border-black border-t-transparent rounded-full" />
+                    Sending...
+                  </span>
+                ) : status === 'success' ? (
+                  <>
+                    <CheckCircle className="w-5 h-5" /> Message Sent
+                  </>
+                ) : status === 'error' ? (
+                  <>
+                    <XCircle className="w-5 h-5" /> Error Sending
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    {t.contact.form.send_button}
+                  </>
+                )}
+              </button>
+              {status === 'success' && (
+                <p className="text-center text-sm text-primary font-body mt-3">{t.contact.form.success_message}</p>
               )}
-            </button>
+              {status === 'error' && (
+                <p className="text-center text-sm text-red-400 font-body mt-3">{t.contact.form.errors.send_error}</p>
+              )}
+            </div>
           </form>
         </motion.div>
       </div>
