@@ -44,8 +44,8 @@ export default function Hero() {
 
         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-16 w-full max-w-xs md:max-w-none">
           <a
-            href={locale === 'en' ? '/Julian_Soto_CV_EN.pdf' : '/Julian_Soto_CV.pdf'}
-            download={locale === 'en' ? 'Julian_Soto_CV_EN.pdf' : 'Julian_Soto_CV.pdf'}
+            href={locale === 'en' ? '/julian_soto_cv_en.docx' : '/julian_soto_cv_es.docx'}
+            download={locale === 'en' ? 'julian_soto_cv_en.docx' : 'julian_soto_cv_es.docx'}
             className="bg-primary text-black font-headline px-6 py-3 md:px-8 md:py-4 uppercase tracking-wider md:tracking-widest text-sm md:text-base glitch-hover transition-all flex items-center justify-center gap-2 w-full md:w-auto"
           >
             <Download className="w-5 h-5" /> {t.hero.download_cv}
