@@ -37,6 +37,20 @@ export interface TranslationSchema {
     heading_highlight: string;
     terminal_title: string;
     terminal_command: string;
+    terminal: {
+      hint: string;
+      help_title: string;
+      cmd_whoami_desc: string;
+      cmd_skills_desc: string;
+      cmd_contact_desc: string;
+      cmd_clear_desc: string;
+      cmd_date_desc: string;
+      cmd_echo_desc: string;
+      skills_frontend: string;
+      skills_backend: string;
+      skills_ml: string;
+      skills_tools: string;
+    };
     lines: {
       label: string;
       value: string;

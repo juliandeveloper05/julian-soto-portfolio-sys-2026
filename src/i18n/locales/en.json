@@ -35,6 +35,20 @@
     "heading_highlight": "INFO",
     "terminal_title": "bash — julian_soto — 80x24",
     "terminal_command": "whoami",
+    "terminal": {
+      "hint": "// type 'help' for available commands",
+      "help_title": "Available commands:",
+      "cmd_whoami_desc": "Display user profile info",
+      "cmd_skills_desc": "Show tech stack",
+      "cmd_contact_desc": "Show contact info",
+      "cmd_clear_desc": "Clear terminal output",
+      "cmd_date_desc": "Print current date and time",
+      "cmd_echo_desc": "Print text to terminal",
+      "skills_frontend": "Frontend",
+      "skills_backend": "Backend",
+      "skills_ml": "ML / AI",
+      "skills_tools": "Tools"
+    },
     "lines": [
       {
         "label": "USER",
