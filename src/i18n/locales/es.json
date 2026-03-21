@@ -309,7 +309,16 @@
       "email_placeholder": "INGRESAR_EMAIL",
       "message_label": "MENSAJE",
       "message_placeholder": "INGRESAR_MENSAJE",
-      "send_button": "ENVIAR_MENSAJE"
+      "send_button": "ENVIAR_MENSAJE",
+      "success_message": "¡Mensaje enviado! Te responderé pronto.",
+      "errors": {
+        "name_required": "El nombre es requerido",
+        "email_required": "El email es requerido",
+        "email_invalid": "Ingresá un email válido",
+        "message_required": "El mensaje es requerido",
+        "message_min": "El mensaje debe tener al menos 10 caracteres",
+        "send_error": "Error al enviar. Por favor intentá de nuevo."
+      }
     }
   },
   "footer": {

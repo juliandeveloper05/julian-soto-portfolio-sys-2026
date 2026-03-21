@@ -309,7 +309,16 @@
       "email_placeholder": "ENTER_EMAIL",
       "message_label": "MESSAGE",
       "message_placeholder": "ENTER_MESSAGE",
-      "send_button": "SEND_MESSAGE"
+      "send_button": "SEND_MESSAGE",
+      "success_message": "Message sent! I'll get back to you soon.",
+      "errors": {
+        "name_required": "Name is required",
+        "email_required": "Email is required",
+        "email_invalid": "Enter a valid email address",
+        "message_required": "Message is required",
+        "message_min": "Message must be at least 10 characters",
+        "send_error": "Failed to send. Please try again."
+      }
     }
   },
   "footer": {
