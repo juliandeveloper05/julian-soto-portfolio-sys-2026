@@ -10,7 +10,7 @@ import Contact from './components/sections/Contact';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background selection:bg-primary selection:text-black">
+    <div className="min-h-screen bg-background selection:bg-primary selection:text-black overflow-x-hidden">
       {/* Scanline Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] scanline-texture"></div>
       

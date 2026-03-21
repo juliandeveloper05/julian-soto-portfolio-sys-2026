@@ -60,7 +60,7 @@ export default function Timeline() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
+              className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 pl-10 md:pl-0 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
             >
               {/* Timeline Node */}
               <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-primary z-10 shadow-[0_0_15px_rgba(156,255,147,0.5)]">

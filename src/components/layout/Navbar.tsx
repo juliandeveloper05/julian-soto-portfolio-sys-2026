@@ -26,9 +26,9 @@ export default function Navbar() {
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="fixed top-0 md:top-4 left-0 md:left-1/2 md:-translate-x-1/2 w-full md:w-[95%] max-w-7xl md:rounded-lg border-b md:border border-primary/20 bg-background/80 md:bg-background/60 backdrop-blur-xl z-[70] flex justify-between items-center px-6 py-4 md:py-3 shadow-[0_0_20px_rgba(156,255,147,0.1)]"
+        className="fixed top-0 md:top-4 left-0 md:left-1/2 md:-translate-x-1/2 w-full md:w-[95%] max-w-7xl md:rounded-lg border-b md:border border-primary/20 bg-background/80 md:bg-background/60 backdrop-blur-xl z-[70] flex justify-between items-center px-3 md:px-6 py-3 md:py-3 shadow-[0_0_20px_rgba(156,255,147,0.1)]"
       >
-        <div className="flex items-center gap-2 text-lg md:text-xl font-headline font-bold text-primary tracking-widest">
+        <div className="flex items-center gap-1 md:gap-2 text-sm md:text-xl font-headline font-bold text-primary tracking-wider md:tracking-widest truncate min-w-0">
           <Terminal className="w-5 h-5 animate-pulse hidden md:block" />
           <span className="md:hidden text-primary">{'>//'}</span> JULIAN_SOTO_SYS
         </div>
