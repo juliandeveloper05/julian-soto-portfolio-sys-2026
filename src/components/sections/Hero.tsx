@@ -22,8 +22,7 @@ export default function Hero() {
             <img 
               alt="Julian Soto Profile" 
               className="w-full h-full object-cover" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeQMzKGjuFfJM135vyKDtmo_gCZuBola4ceGHYzxWMv3TnyPYEegTO7wllXG5wxfxq-a0sZ41bmmICxVClK53LcANBYPKsK73H6Xr6J5P9Kv6Y2eQjq4A0Q-MOijDmK5N-0SK1IIket76oBIGTPmDnblpWF74ZGZXWNe0b7Al9lLRWztUlXdIsut4xXub_aFTJuJUOn1CuojYQmEEpSD_uYXoEi_hkL0MHGyNl0BNLhur4vJM2yvClZaKRUGB-92gUo39-plZUsmE-"
-              referrerPolicy="no-referrer"
+              src="/profile.png"
             />
           </div>
           <div className="absolute -bottom-2 -right-2 bg-background border border-primary px-2 py-1 text-[10px] font-headline text-primary">
@@ -41,9 +40,13 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-16 w-full max-w-xs md:max-w-none">
-          <button className="bg-primary text-black font-headline px-8 py-4 uppercase tracking-widest glitch-hover transition-all flex items-center justify-center gap-2 w-full md:w-auto">
+          <a 
+            href="/Julian_Soto_CV.pdf" 
+            download="Julian_Soto_CV.pdf"
+            className="bg-primary text-black font-headline px-8 py-4 uppercase tracking-widest glitch-hover transition-all flex items-center justify-center gap-2 w-full md:w-auto"
+          >
             <Download className="w-5 h-5" /> DESCARGAR CV
-          </button>
+          </a>
           <a 
             href="#contact"
             className="border border-on-surface-variant/30 text-secondary font-headline px-8 py-4 uppercase tracking-widest hover:bg-secondary/10 glitch-hover transition-all w-full md:w-auto text-center flex items-center justify-center"
