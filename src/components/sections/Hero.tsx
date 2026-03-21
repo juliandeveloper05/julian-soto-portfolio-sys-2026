@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   return (
     <section id="root" className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden px-4">
@@ -43,9 +43,9 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mb-16 w-full max-w-xs md:max-w-none">
-          <a 
-            href="/Julian_Soto_CV.pdf" 
-            download="Julian_Soto_CV.pdf"
+          <a
+            href={locale === 'en' ? '/Julian_Soto_CV_EN.pdf' : '/Julian_Soto_CV.pdf'}
+            download={locale === 'en' ? 'Julian_Soto_CV_EN.pdf' : 'Julian_Soto_CV.pdf'}
             className="bg-primary text-black font-headline px-6 py-3 md:px-8 md:py-4 uppercase tracking-wider md:tracking-widest text-sm md:text-base glitch-hover transition-all flex items-center justify-center gap-2 w-full md:w-auto"
           >
             <Download className="w-5 h-5" /> {t.hero.download_cv}
