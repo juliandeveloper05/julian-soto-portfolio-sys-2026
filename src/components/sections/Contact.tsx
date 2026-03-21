@@ -1,9 +1,38 @@
-import { Send, Mail, User } from 'lucide-react';
+import { Send, Mail, User, CheckCircle, XCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
+import { useState } from 'react';
 
 export default function Contact() {
   const { t } = useTranslation();
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) return;
+    
+    setStatus('loading');
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
+  };
 
   return (
     <section id="contact" className="py-12 md:py-24 px-6 max-w-7xl mx-auto w-full mb-16 md:mb-0">
@@ -67,14 +96,18 @@ export default function Contact() {
           {/* Ambient Glow */}
           <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-primary/5 blur-[60px] rounded-full group-hover:bg-primary/10 transition-all duration-500"></div>
 
-          <form className="space-y-6 relative z-10">
+          <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
             <div className="space-y-2">
               <label className="font-headline text-[10px] text-primary/60 uppercase tracking-widest block">{t.contact.form.name_label}</label>
               <div className="relative">
                 <input 
                   type="text" 
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  disabled={status === 'loading'}
+                  required
                   placeholder={t.contact.form.name_placeholder}
-                  className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-primary transition-all duration-300 font-body"
+                  className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-primary transition-all duration-300 font-body disabled:opacity-50"
                 />
                 <div className="absolute bottom-0 left-0 h-px bg-primary w-0 focus-within:w-full transition-all duration-500"></div>
               </div>
@@ -85,8 +118,12 @@ export default function Contact() {
               <div className="relative">
                 <input 
                   type="email" 
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  disabled={status === 'loading'}
+                  required
                   placeholder={t.contact.form.email_placeholder}
-                  className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-secondary transition-all duration-300 font-body"
+                  className="w-full bg-background/50 border-b border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-secondary transition-all duration-300 font-body disabled:opacity-50"
                 />
                 <div className="absolute bottom-0 left-0 h-px bg-secondary w-0 focus-within:w-full transition-all duration-500"></div>
               </div>
@@ -97,18 +134,44 @@ export default function Contact() {
               <div className="relative">
                 <textarea 
                   rows={4}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  disabled={status === 'loading'}
+                  required
                   placeholder={t.contact.form.message_placeholder}
-                  className="w-full bg-background/50 border border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-tertiary transition-all duration-300 font-body resize-none rounded-lg"
+                  className="w-full bg-background/50 border border-on-surface-variant/20 py-3 px-4 text-on-surface placeholder:text-on-surface-variant/30 focus:outline-none focus:border-tertiary transition-all duration-300 font-body resize-none rounded-lg disabled:opacity-50"
                 ></textarea>
               </div>
             </div>
 
             <button 
               type="submit"
-              className="w-full bg-primary text-black font-headline py-4 uppercase tracking-widest glitch-hover transition-all flex items-center justify-center gap-2 group"
+              disabled={status === 'loading'}
+              className={`w-full font-headline py-4 uppercase tracking-widest transition-all flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed ${
+                status === 'success' ? 'bg-green-500 text-black' : 
+                status === 'error' ? 'bg-red-500 text-white' : 
+                'bg-primary text-black glitch-hover'
+              }`}
             >
-              <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
-              {t.contact.form.send_button}
+              {status === 'loading' ? (
+                <span className="flex items-center gap-2">
+                  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} className="w-5 h-5 border-2 border-black border-t-transparent rounded-full" />
+                  Sending...
+                </span>
+              ) : status === 'success' ? (
+                <>
+                  <CheckCircle className="w-5 h-5" /> Message Sent
+                </>
+              ) : status === 'error' ? (
+                <>
+                  <XCircle className="w-5 h-5" /> Error Sending
+                </>
+              ) : (
+                <>
+                  <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
+                  {t.contact.form.send_button}
+                </>
+              )}
             </button>
           </form>
         </motion.div>
