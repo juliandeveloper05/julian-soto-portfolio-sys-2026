@@ -37,17 +37,17 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         className="fixed top-0 md:top-4 left-0 md:left-1/2 md:-translate-x-1/2 w-full md:w-[95%] max-w-7xl md:rounded-lg border-b md:border border-primary/20 bg-background/80 md:bg-background/60 backdrop-blur-xl z-[70] flex justify-between items-center px-3 md:px-6 py-3 md:py-3 shadow-[0_0_20px_rgba(156,255,147,0.1)]"
       >
-        <div className="flex items-center gap-1 md:gap-2 text-sm md:text-xl font-headline font-bold text-primary tracking-wider md:tracking-widest truncate min-w-0">
+        <div className="flex items-center gap-1 md:gap-2 text-sm md:text-xl font-headline font-bold text-primary tracking-wider md:tracking-widest truncate min-w-0 whitespace-nowrap">
           <Terminal className="w-5 h-5 animate-pulse hidden md:block" />
           <span className="md:hidden text-primary">{'>//'}</span> {t.navbar.brand}
         </div>
         
         {/* Desktop Links */}
-        <div className="hidden md:flex gap-8 items-center">
+        <div className="hidden md:flex gap-4 lg:gap-8 items-center">
           {navLinks.map((link) => (
             <a 
               key={link.href}
-              className="font-headline tracking-tighter uppercase text-sm text-secondary/70 hover:text-secondary transition-colors hover:bg-primary/10 hover:skew-x-2 px-2" 
+              className="font-headline tracking-tighter uppercase text-sm text-secondary/70 hover:text-secondary transition-colors hover:bg-primary/10 hover:skew-x-2 px-2 whitespace-nowrap" 
               href={link.href}
             >
               {link.name}
@@ -59,17 +59,17 @@ export default function Navbar() {
           {/* Language Toggle */}
           <button 
             onClick={handleLangToggle}
-            className={`font-headline tracking-tighter uppercase text-xs md:text-sm text-secondary border border-secondary/30 px-2 md:px-3 py-1 hover:bg-secondary/10 hover:border-secondary/60 transition-all active:scale-95 relative overflow-hidden ${isGlitching ? 'lang-glitch' : ''}`}
+            className={`font-headline tracking-tighter uppercase text-xs md:text-sm text-secondary border border-secondary/30 px-2 lg:px-3 py-1 hover:bg-secondary/10 hover:border-secondary/60 transition-all active:scale-95 relative overflow-hidden whitespace-nowrap ${isGlitching ? 'lang-glitch' : ''}`}
           >
             <span className={`inline-block transition-transform duration-200 ${isGlitching ? 'animate-pulse' : ''}`}>
               [ LANG: {locale.toUpperCase()} ]
             </span>
           </button>
 
-          <Terminal className="w-5 h-5 text-primary cursor-pointer hover:scale-110 transition-transform hidden md:block" />
+          <Terminal className="w-5 h-5 text-primary cursor-pointer hover:scale-110 transition-transform hidden lg:block" />
           <a 
             href="#contact"
-            className="hidden md:block font-headline tracking-tighter uppercase text-sm text-primary border border-primary/30 px-4 py-1 hover:bg-primary hover:text-black transition-all active:scale-95"
+            className="hidden md:block font-headline tracking-tighter uppercase text-sm text-primary border border-primary/30 px-2 lg:px-4 py-1 hover:bg-primary hover:text-black transition-all active:scale-95 whitespace-nowrap"
           >
             {t.navbar.contact_button}
           </a>
