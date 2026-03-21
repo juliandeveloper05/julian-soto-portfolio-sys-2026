@@ -59,7 +59,8 @@ export interface TranslationSchema {
       title: string;
       description: string;
       tag: string;
-      image: string;
+      icon: string;
+      techs: string[];
       color: string;
       githubUrl: string;
       liveUrl: string;

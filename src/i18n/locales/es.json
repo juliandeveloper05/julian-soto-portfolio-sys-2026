@@ -36,11 +36,26 @@
     "terminal_title": "bash — julian_soto — 80x24",
     "terminal_command": "whoami",
     "lines": [
-      { "label": "USER", "value": "julian_soto" },
-      { "label": "ROLE", "value": "Senior Software Engineer | Full-Stack Developer" },
-      { "label": "LOCATION", "value": "Argentina // Remote" },
-      { "label": "BIO", "value": "Ingeniero de Software Full-Stack Senior especializado en arquitecturas web modernas y aplicaciones potenciadas con IA. Diseño soluciones escalables y type-safe que resuelven problemas de negocio complejos — desde plataformas CMS hasta herramientas de audio con redes neuronales." },
-      { "label": "STACK", "value": "TypeScript, React, Next.js, Node.js, PHP 8, WordPress, Python, FastAPI, PyTorch, TensorFlow" }
+      {
+        "label": "USER",
+        "value": "julian_soto"
+      },
+      {
+        "label": "ROLE",
+        "value": "Senior Software Engineer | Full-Stack Developer"
+      },
+      {
+        "label": "LOCATION",
+        "value": "Argentina // Remote"
+      },
+      {
+        "label": "BIO",
+        "value": "Ingeniero de Software Full-Stack Senior especializado en arquitecturas web modernas y aplicaciones potenciadas con IA. Diseño soluciones escalables y type-safe que resuelven problemas de negocio complejos — desde plataformas CMS hasta herramientas de audio con redes neuronales."
+      },
+      {
+        "label": "STACK",
+        "value": "TypeScript, React, Next.js, Node.js, PHP 8, WordPress, Python, FastAPI, PyTorch, TensorFlow"
+      }
     ]
   },
   "skills": {
@@ -48,19 +63,46 @@
     "categories": [
       {
         "name": "Frontend",
-        "items": ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"]
+        "items": [
+          "Next.js",
+          "React 19",
+          "TypeScript",
+          "Tailwind CSS",
+          "HTML5",
+          "CSS3"
+        ]
       },
       {
         "name": "Backend & Data",
-        "items": ["Node.js", "PHP 8", "WordPress", "PostgreSQL", "MySQL", "MongoDB", "Supabase"]
+        "items": [
+          "Node.js",
+          "PHP 8",
+          "WordPress",
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB",
+          "Supabase"
+        ]
       },
       {
         "name": "AI & ML",
-        "items": ["Python", "FastAPI", "PyTorch", "TensorFlow", "Machine Learning"]
+        "items": [
+          "Python",
+          "FastAPI",
+          "PyTorch",
+          "TensorFlow",
+          "Machine Learning"
+        ]
       },
       {
         "name": "Architecture",
-        "items": ["Docker", "Cloud Sync", "Web Audio API", "OOP Patterns", "Systems Design"]
+        "items": [
+          "Docker",
+          "Cloud Sync",
+          "Web Audio API",
+          "OOP Patterns",
+          "Systems Design"
+        ]
       }
     ]
   },
@@ -75,7 +117,12 @@
         "title": "DUMU_AI_EXTRACTION",
         "description": "Aplicación full-stack de IA que extrae líneas de bajo de cualquier archivo de audio usando la red neuronal Demucs de Meta AI para separación de fuentes y Basic Pitch de Spotify para conversión audio-a-MIDI. Incluye detección de BPM y pipeline de progreso en tiempo real.",
         "tag": "v2.0.0-STABLE",
-        "image": "/assets/dumu-preview.png",
+        "icon": "Cpu",
+        "techs": [
+          "NEXT.JS",
+          "PYTHON",
+          "PYTORCH"
+        ],
         "color": "primary",
         "githubUrl": "https://github.com/juliandeveloper05/Dumu-AI-Bass-Extraction",
         "liveUrl": "https://dumu.vercel.app/"
@@ -85,7 +132,12 @@
         "title": "BITROVA_TASKS",
         "description": "App de gestión de tareas con autenticación Supabase y sincronización en la nube. Incluye tareas recurrentes, diseño glassmorphism, adjuntos, subtareas, drag & drop, undo/redo y animaciones Lottie. Multiplataforma iOS/Android/Web.",
         "tag": "CROSS_PLATFORM",
-        "image": "/assets/bitrova-preview.png",
+        "icon": "Cloud",
+        "techs": [
+          "SUPABASE",
+          "REACT_NATIVE",
+          "TS"
+        ],
         "color": "secondary",
         "githubUrl": "https://github.com/juliandeveloper05/tasklist-app",
         "liveUrl": ""
@@ -95,7 +147,12 @@
         "title": "BASS_ACADEMY",
         "description": "Aplicación de entrenamiento musical interactiva construida con React 19 y Web Audio API. Incluye síntesis de audio en tiempo real, generación dinámica de ejercicios y visualización responsiva de tablaturas.",
         "tag": "LIVE_DEMO",
-        "image": "/assets/bass-academy-preview.png",
+        "icon": "Zap",
+        "techs": [
+          "REACT_19",
+          "WEB_AUDIO_API",
+          "TS"
+        ],
         "color": "primary",
         "githubUrl": "https://github.com/juliandeveloper05/Bass-Academy-Interactive-Bass-Training",
         "liveUrl": "https://bass-academy-interactive-bass-train.vercel.app/"
@@ -105,7 +162,12 @@
         "title": "NEXUSSHOP_ECOMMERCE",
         "description": "Solución E-commerce Headless con integración segura de Stripe/MercadoPago, gestión dinámica de inventario vía MongoDB, y optimizaciones de rendimiento SSR.",
         "tag": "E-COMMERCE",
-        "image": "/assets/mp-preview.jpg",
+        "icon": "Database",
+        "techs": [
+          "NEXT.JS",
+          "MONGODB",
+          "STRIPE"
+        ],
         "color": "secondary",
         "githubUrl": "https://github.com/juliandeveloper05/e-commerce-project-mp-2024/tree/main",
         "liveUrl": "https://e-commerce-project-mp-2024-second.vercel.app/"
@@ -115,7 +177,12 @@
         "title": "SOUL_SOLUTIONS",
         "description": "Landing page profesional para consultoría en modernización de mainframes. Demuestra experiencia en migración legacy y capacidades de diseño de sistemas.",
         "tag": "ENTERPRISE",
-        "image": "/assets/soul-solutions-preview.jpg",
+        "icon": "Terminal",
+        "techs": [
+          "COBOL_INTEGRATION",
+          "NODE.JS",
+          "REST"
+        ],
         "color": "primary",
         "githubUrl": "https://github.com/juliandeveloper05/soul-solutions",
         "liveUrl": "https://soul-solutions-mauve.vercel.app/"
@@ -125,7 +192,12 @@
         "title": "FORMA_REAL_CMS",
         "description": "Foro de comunidad fitness con arquitectura WordPress personalizada. Plugin OOP con tablas MySQL propias, sistema de notificaciones en tiempo real, moderación avanzada, búsqueda full-text y diseño moderno.",
         "tag": "CMS_PLUGIN",
-        "image": "/assets/forma-real-preview.png",
+        "icon": "Shield",
+        "techs": [
+          "WORDPRESS",
+          "PHP_8",
+          "MYSQL"
+        ],
         "color": "secondary",
         "githubUrl": "https://github.com/juliandeveloper05/forma-real",
         "liveUrl": ""
