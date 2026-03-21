@@ -1,8 +1,28 @@
+"use client";
+
 import { motion } from 'framer-motion';
 import { useTranslation } from '../../i18n/LanguageContext';
+import { useState, useRef } from 'react';
 
 export default function About() {
   const { t } = useTranslation();
+  const [inputValue, setInputValue] = useState('');
+  const [commandHistory, setCommandHistory] = useState<{command: string, response: string}[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      if (inputValue.trim() === '') {
+        setCommandHistory([...commandHistory, { command: '', response: '' }]);
+      } else {
+        setCommandHistory([
+          ...commandHistory,
+          { command: inputValue, response: `bash: ${inputValue}: command not found` }
+        ]);
+      }
+      setInputValue('');
+    }
+  };
 
   return (
     <section id="about" className="py-12 md:py-24 px-6 max-w-7xl mx-auto w-full">
@@ -35,7 +55,10 @@ export default function About() {
         </div>
 
         {/* Terminal Body */}
-        <div className="p-6 font-mono text-sm md:text-base leading-relaxed">
+        <div 
+          className="p-6 font-mono text-sm md:text-base leading-relaxed cursor-text relative"
+          onClick={() => inputRef.current?.focus()}
+        >
           <div className="mb-4 text-on-surface-variant">
             <span className="text-primary">julian@mainframe</span>:<span className="text-secondary">~</span>$ {t.about.terminal_command}
           </div>
@@ -56,14 +79,42 @@ export default function About() {
             ))}
           </div>
 
-          <div className="mt-6 flex items-center gap-2">
-            <span className="text-primary">julian@mainframe</span>:<span className="text-secondary">~</span>$ 
+          {/* Command History */}
+          <div className="z-10 relative">
+            {commandHistory.map((item, index) => (
+              <div key={index} className="mt-6">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-primary whitespace-nowrap">julian@mainframe</span>:<span className="text-secondary whitespace-nowrap">~</span>$ 
+                  <span className="text-on-surface break-all">{item.command}</span>
+                </div>
+                {item.response && (
+                  <div className="text-red-500/80 mt-1">{item.response}</div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 flex items-center gap-2 flex-wrap z-10 relative">
+            <span className="text-primary whitespace-nowrap">julian@mainframe</span>:<span className="text-secondary whitespace-nowrap">~</span>$ 
+            <span className="text-on-surface break-all">{inputValue}</span>
             <motion.span 
               animate={{ opacity: [1, 0] }}
               transition={{ repeat: Infinity, duration: 0.8 }}
               className="w-2 h-5 bg-primary"
             ></motion.span>
           </div>
+
+          <input
+            ref={inputRef}
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="absolute inset-0 opacity-0 cursor-text w-full h-full z-0"
+            spellCheck={false}
+            autoComplete="off"
+            aria-hidden="true"
+          />
         </div>
       </motion.div>
     </section>
