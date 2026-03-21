@@ -31,6 +31,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 72px;
   }
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary selection:text-black;

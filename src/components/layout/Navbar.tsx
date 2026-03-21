@@ -23,6 +23,15 @@ export default function Navbar() {
   const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
   const closeMenu = () => setIsMobileMenuOpen(false);
 
+  const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    closeMenu();
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 350);
+  };
+
   const handleLangToggle = () => {
     setIsGlitching(true);
     toggleLocale();
@@ -107,10 +116,10 @@ export default function Navbar() {
                 {t.navbar.mobile_nav_label}
               </div>
               {navLinks.map((link, index) => (
-                <motion.a 
+                <motion.a
                   key={link.href}
                   href={link.href}
-                  onClick={closeMenu}
+                  onClick={(e) => handleMobileNavClick(e, link.href)}
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: index * 0.05 }}
@@ -148,21 +157,21 @@ export default function Navbar() {
 
       {/* Mobile Bottom Navigation (Mockup Style) */}
       <div className="fixed bottom-0 left-0 w-full bg-background/90 backdrop-blur-lg border-t border-primary/20 z-50 flex md:hidden justify-around items-center py-3 px-2">
-        <a href="#root" onClick={closeMenu} className="flex flex-col items-center gap-1 group">
+        <a href="#root" onClick={(e) => handleMobileNavClick(e, '#root')} className="flex flex-col items-center gap-1 group">
           <div className="p-1 rounded-lg bg-primary/20 shadow-[0_0_10px_rgba(156,255,147,0.3)]">
             <Home className="w-5 h-5 text-primary" />
           </div>
           <span className="text-[10px] font-headline text-primary uppercase tracking-tighter">{t.navbar.mobile_bottom.root}</span>
         </a>
-        <a href="#projects" onClick={closeMenu} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
+        <a href="#projects" onClick={(e) => handleMobileNavClick(e, '#projects')} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
           <Code className="w-5 h-5 text-on-surface" />
           <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">{t.navbar.mobile_bottom.code}</span>
         </a>
-        <a href="#services" onClick={closeMenu} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
+        <a href="#services" onClick={(e) => handleMobileNavClick(e, '#services')} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
           <Cpu className="w-5 h-5 text-on-surface" />
           <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">{t.navbar.mobile_bottom.core}</span>
         </a>
-        <a href="#contact" onClick={closeMenu} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
+        <a href="#contact" onClick={(e) => handleMobileNavClick(e, '#contact')} className="flex flex-col items-center gap-1 opacity-50 hover:opacity-100 transition-opacity">
           <LinkIcon className="w-5 h-5 text-on-surface" />
           <span className="text-[10px] font-headline text-on-surface uppercase tracking-tighter">{t.navbar.mobile_bottom.link}</span>
         </a>
