@@ -138,4 +138,13 @@ export interface TranslationSchema {
     copyright: string;
     status: string;
   };
+  chatbot: {
+    button_label: string;
+    close_label: string;
+    title: string;
+    welcome_message: string;
+    placeholder: string;
+    typing: string;
+    error_message: string;
+  };
 }

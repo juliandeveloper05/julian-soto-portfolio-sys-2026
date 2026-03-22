@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import CyberCursor from './components/ui/CyberCursor';
+import ChatBot from './components/ui/ChatBot';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
@@ -36,6 +37,7 @@ export default function App() {
         </main>
 
         <Footer />
+        <ChatBot />
       </div>
     </LanguageProvider>
   );

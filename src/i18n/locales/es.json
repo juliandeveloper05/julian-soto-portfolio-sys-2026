@@ -338,5 +338,14 @@
   "footer": {
     "copyright": "© 2026 J_SOTO // CONEXIÓN_ENCRIPTADA",
     "status": "UP_LINK_ACTIVE"
+  },
+  "chatbot": {
+    "button_label": "HABLAR_CON_JULIAN",
+    "close_label": "CERRAR",
+    "title": "JULIAN_IA // ASISTENTE",
+    "welcome_message": "¡Hola! Soy el asistente IA de Julian. Preguntame sobre sus skills, proyectos o cómo trabajar con él.",
+    "placeholder": "Preguntame lo que quieras...",
+    "typing": "procesando...",
+    "error_message": "Lo siento, no pude procesar eso. Intentá de nuevo o contactá a Julian en juliansoto.dev@gmail.com"
   }
 }
