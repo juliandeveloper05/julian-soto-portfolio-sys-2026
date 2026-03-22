@@ -58,6 +58,7 @@ export default function ChatBot() {
   const [hasGreeted, setHasGreeted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const savedScrollY = useRef(0);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -68,12 +69,23 @@ export default function ChatBot() {
   }, [messages]);
 
   useEffect(() => {
-    if (isOpen && !hasGreeted) {
-      setHasGreeted(true);
-      setMessages([{ role: 'bot', text: t.chatbot.welcome_message }]);
-    }
     if (isOpen) {
+      savedScrollY.current = window.scrollY;
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY.current}px`;
+      document.body.style.width = '100%';
+      if (!hasGreeted) {
+        setHasGreeted(true);
+        setMessages([{ role: 'bot', text: t.chatbot.welcome_message }]);
+      }
       setTimeout(() => inputRef.current?.focus(), 300);
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, savedScrollY.current);
     }
   }, [isOpen, hasGreeted, t.chatbot.welcome_message]);
 
