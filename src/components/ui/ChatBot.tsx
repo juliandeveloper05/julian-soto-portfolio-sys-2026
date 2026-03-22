@@ -49,7 +49,7 @@ Instructions:
 - You can suggest scrolling to a specific section if relevant (Skills, Projects, About, Services, Timeline, Contact)
 - Never make up information about Julian that isn't in this prompt`;
 
-export default function ChatBot() {
+export default function ChatBot({ isMobileNavOpen }: { isMobileNavOpen?: boolean }) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -127,6 +127,8 @@ export default function ChatBot() {
       sendMessage();
     }
   };
+
+  if (isMobileNavOpen) return null;
 
   return (
     <>

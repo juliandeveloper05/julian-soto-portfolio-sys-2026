@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import CyberCursor from './components/ui/CyberCursor';
 import ChatBot from './components/ui/ChatBot';
@@ -13,6 +13,8 @@ import Timeline from './components/sections/Timeline';
 import Contact from './components/sections/Contact';
 
 export default function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -23,9 +25,9 @@ export default function App() {
         <CyberCursor />
         {/* Scanline Overlay */}
         <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] scanline-texture"></div>
-        
-        <Navbar />
-        
+
+        <Navbar onMobileMenuChange={setIsMobileMenuOpen} />
+
         <main>
           <Hero />
           <Skills />
@@ -37,7 +39,7 @@ export default function App() {
         </main>
 
         <Footer />
-        <ChatBot />
+        <ChatBot isMobileNavOpen={isMobileMenuOpen} />
       </div>
     </LanguageProvider>
   );
