@@ -6,7 +6,7 @@ export default function Hero() {
   const { t, locale } = useTranslation();
 
   return (
-    <section id="root" className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden px-4">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden px-4">
       {/* Background Aether */}
       <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 blur-[120px] rounded-full"></div>

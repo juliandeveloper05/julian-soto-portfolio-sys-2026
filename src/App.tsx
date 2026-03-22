@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import CyberCursor from './components/ui/CyberCursor';
 import Navbar from './components/layout/Navbar';
@@ -11,6 +12,10 @@ import Timeline from './components/sections/Timeline';
 import Contact from './components/sections/Contact';
 
 export default function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-background selection:bg-primary selection:text-black overflow-x-hidden">
