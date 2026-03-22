@@ -36,6 +36,13 @@
   body {
     @apply bg-background text-on-surface font-body selection:bg-primary selection:text-black;
   }
+
+  /* Hide native cursor on desktop (mouse) — CyberCursor component replaces it */
+  @media (pointer: fine) {
+    html, * {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {
