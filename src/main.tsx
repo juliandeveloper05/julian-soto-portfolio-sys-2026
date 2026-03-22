@@ -4,6 +4,7 @@ import App from './App.tsx';
 import './index.css';
 
 history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
