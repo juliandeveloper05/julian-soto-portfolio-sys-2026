@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useTranslation } from '../../i18n/LanguageContext';
 
-export default function Navbar() {
+export default function Navbar({ onMobileMenuChange }: { onMobileMenuChange?: (open: boolean) => void }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { locale, t, toggleLocale } = useTranslation();
   const [isGlitching, setIsGlitching] = useState(false);
@@ -20,8 +20,15 @@ export default function Navbar() {
     { name: t.navbar.links.contact, href: '#contact' },
   ];
 
-  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const closeMenu = () => setIsMobileMenuOpen(false);
+  const toggleMenu = () => {
+    const next = !isMobileMenuOpen;
+    setIsMobileMenuOpen(next);
+    onMobileMenuChange?.(next);
+  };
+  const closeMenu = () => {
+    setIsMobileMenuOpen(false);
+    onMobileMenuChange?.(false);
+  };
 
   const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
