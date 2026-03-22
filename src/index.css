@@ -83,6 +83,21 @@
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .chat-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 255, 147, 0.3) transparent;
+  }
+  .chat-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .chat-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .chat-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 255, 147, 0.3);
+    border-radius: 2px;
+  }
 }
 
 @keyframes lang-glitch-effect {

@@ -338,5 +338,14 @@
   "footer": {
     "copyright": "© 2026 J_SOTO // ENCRYPTED_CONNECTION",
     "status": "UP_LINK_ACTIVE"
+  },
+  "chatbot": {
+    "button_label": "ASK_JULIAN",
+    "close_label": "CLOSE",
+    "title": "JULIAN_AI // ASSISTANT",
+    "welcome_message": "Hey! I'm Julian's AI assistant. Ask me anything about his skills, projects, or how to work with him.",
+    "placeholder": "Ask me anything...",
+    "typing": "processing...",
+    "error_message": "Sorry, I couldn't process that. Try again or contact Julian directly at juliansoto.dev@gmail.com"
   }
 }
