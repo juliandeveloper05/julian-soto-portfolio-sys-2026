@@ -85,6 +85,7 @@ export default function About() {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (commandHistory.length === 0) return;
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [commandHistory]);
 
