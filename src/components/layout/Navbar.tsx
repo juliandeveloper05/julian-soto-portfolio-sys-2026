@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isGlitching, setIsGlitching] = useState(false);
 
   const navLinks = [
-    { name: t.navbar.links.root, href: '#root' },
+    { name: t.navbar.links.root, href: '#hero' },
     { name: t.navbar.links.about, href: '#about' },
     { name: t.navbar.links.services, href: '#services' },
     { name: t.navbar.links.skills, href: '#skills' },
@@ -157,7 +157,7 @@ export default function Navbar() {
 
       {/* Mobile Bottom Navigation (Mockup Style) */}
       <div className="fixed bottom-0 left-0 w-full bg-background/90 backdrop-blur-lg border-t border-primary/20 z-50 flex md:hidden justify-around items-center py-3 px-2">
-        <a href="#root" onClick={(e) => handleMobileNavClick(e, '#root')} className="flex flex-col items-center gap-1 group">
+        <a href="#hero" onClick={(e) => handleMobileNavClick(e, '#hero')} className="flex flex-col items-center gap-1 group">
           <div className="p-1 rounded-lg bg-primary/20 shadow-[0_0_10px_rgba(156,255,147,0.3)]">
             <Home className="w-5 h-5 text-primary" />
           </div>
