@@ -126,10 +126,10 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed bottom-24 right-4 z-[200] w-[calc(100vw-2rem)] max-w-[380px] sm:right-6
+            className="fixed bottom-[88px] right-4 z-[200] w-[calc(100vw-2rem)] max-w-[380px] sm:bottom-24 sm:right-6
                        flex flex-col bg-surface border border-primary/20 rounded-xl shadow-2xl
                        shadow-primary/10 overflow-hidden"
-            style={{ height: 'min(520px, calc(100svh - 120px))' }}
+            style={{ height: 'min(520px, calc(100svh - 160px))' }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-primary/20 bg-background/60 backdrop-blur-sm flex-shrink-0">
@@ -218,7 +218,9 @@ export default function ChatBot() {
       {/* Floating Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(prev => !prev)}
-        className="fixed bottom-6 right-4 sm:right-6 z-[200] flex items-center gap-2 px-4 py-3
+        className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-[200]
+                   w-12 h-12 sm:w-auto sm:h-auto
+                   flex items-center justify-center sm:gap-2 sm:px-4 sm:py-3
                    bg-primary text-background font-headline font-semibold text-sm tracking-widest
                    rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50
                    hover:scale-105 active:scale-95 transition-all"
@@ -236,7 +238,7 @@ export default function ChatBot() {
             </motion.span>
           )}
         </AnimatePresence>
-        <span>{isOpen ? t.chatbot.close_label : t.chatbot.button_label}</span>
+        <span className="hidden sm:inline">{isOpen ? t.chatbot.close_label : t.chatbot.button_label}</span>
       </motion.button>
     </>
   );
