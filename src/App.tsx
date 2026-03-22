@@ -1,4 +1,5 @@
 import { LanguageProvider } from './i18n/LanguageContext';
+import CyberCursor from './components/ui/CyberCursor';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-background selection:bg-primary selection:text-black overflow-x-hidden">
+        <CyberCursor />
         {/* Scanline Overlay */}
         <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] scanline-texture"></div>
         
